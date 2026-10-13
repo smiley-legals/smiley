@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Smiles — Discord Trivia Bot. Terms of Service and Privacy Policy.">
+  <meta name="theme-color" content="#0a0a0b">
+  <title>Smiles — Discord Trivia Bot</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="dark"] {
+      --bg: #09090b;
+      --bg-elevated: #111114;
+      --bg-card: #151518;
+      --bg-card-hover: #1c1c21;
+      --text: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent: #e11d12;
+      --accent-hover: #ff2a1f;
+      --accent-muted: rgba(225, 29, 18, 0.12);
+      --border: rgba(255, 255, 255, 0.06);
+      --border-strong: rgba(255, 255, 255, 0.1);
+      --shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 24px 48px -12px rgba(0,0,0,0.5);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+    [data-theme="light"] {
+      --bg: #fafafa;
+      --bg-elevated: #ffffff;
+      --bg-card: #ffffff;
+      --bg-card-hover: #fef7f6;
+      --text: #09090b;
+      --text-secondary: #52525b;
+      --text-muted: #71717a;
+      --accent: #c4150f;
+      --accent-hover: #a3120d;
+      --accent-muted: rgba(196, 21, 15, 0.08);
+      --border: rgba(0, 0, 0, 0.06);
+      --border-strong: rgba(0, 0, 0, 0.1);
+      --shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 24px 48px -12px rgba(0,0,0,0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    /* Subtle ambient glow */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(225, 29, 18, 0.12), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(225, 29, 18, 0.06), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+    [data-theme="light"] body::before {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(196, 21, 15, 0.06), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(196, 21, 15, 0.03), transparent);
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 64px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .brand span {
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: -0.02em;
+    }
+
+    .theme-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .theme-btn:hover {
+      background: var(--bg-card-hover);
+      color: var(--text);
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+    .theme-btn svg { width: 18px; height: 18px; }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .hero-logo {
+      width: 112px;
+      height: 112px;
+      border-radius: 28px;
+      object-fit: cover;
+      margin: 0 auto 28px;
+      display: block;
+      box-shadow:
+        0 0 0 3px var(--accent),
+        0 20px 40px -12px rgba(225, 29, 18, 0.35);
+    }
+    .hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      color: var(--text-secondary);
+      font-size: 1.0625rem;
+      max-width: 380px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: auto;
+    }
+    @media (max-width: 560px) {
+      .cards { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 28px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow);
+      transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(225, 29, 18, 0.35);
+      transform: translateY(-3px);
+      box-shadow:
+        0 0 0 1px rgba(225, 29, 18, 0.15),
+        0 28px 56px -16px rgba(0,0,0,0.45);
+    }
+    [data-theme="light"] .card:hover {
+      box-shadow:
+        0 0 0 1px rgba(196, 21, 15, 0.12),
+        0 28px 56px -16px rgba(0,0,0,0.1);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-muted);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .card-icon svg { width: 22px; height: 22px; }
+
+    .card h2 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .card p {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 4px;
+    }
+    .card-cta svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s;
+    }
+    .card:hover .card-cta svg { transform: translateX(3px); }
+
+    /* Footer */
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.8125rem;
+    }
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <a class="brand" href="index.html">
+        <img src="logo.png" alt="Smiles logo" width="40" height="40">
+        <span>Smiles</span>
+      </a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle light and dark mode" title="Toggle theme">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"/>
+          <path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/>
+        </svg>
+      </button>
+    </header>
+
+    <section class="hero">
+      <img class="hero-logo" src="logo.png" alt="Smiles" width="112" height="112">
+      <h1>Smiles Trivia Bot</h1>
+      <p>A polished Discord trivia bot with timed spawns, categories, and admin controls.</p>
+    </section>
+
+    <div class="cards">
+      <a class="card" href="terms-of-service.html">
+        <div class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <h2>Terms of Service</h2>
+        <p>Rules and conditions for inviting and using the Smiles bot on Discord.</p>
+        <span class="card-cta">
+          Read terms
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="card" href="privacy-policy.html">
+        <div class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <h2>Privacy Policy</h2>
+        <p>How we handle server data, user IDs, and what information is stored.</p>
+        <span class="card-cta">
+          Read privacy
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <footer>
+      Smiles Trivia Bot · Effective October 13, 2026
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const btn = document.getElementById('themeBtn');
+      const stored = localStorage.getItem('smiles-theme');
+      if (stored) root.setAttribute('data-theme', stored);
+      syncMeta();
+
+      btn.addEventListener('click', function () {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('smiles-theme', next);
+        syncMeta();
+      });
+
+      function syncMeta() {
+        const dark = root.getAttribute('data-theme') === 'dark';
+        document.querySelector('meta[name="theme-color"]').content = dark ? '#09090b' : '#fafafa';
+      }
+    })();
+  </script>
+</body>
+</html>
