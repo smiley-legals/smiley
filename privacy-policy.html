@@ -4,276 +4,112 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Privacy Policy for the Smiley Discord Trivia Bot">
-  <meta name="theme-color" content="#0a0a0b">
   <title>Privacy Policy — Smiley</title>
   <link rel="icon" type="image/png" href="logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root, [data-theme="dark"] {
-      --bg: #09090b;
-      --bg-elevated: #111114;
-      --bg-card: #151518;
-      --text: #fafafa;
-      --text-secondary: #a1a1aa;
-      --text-muted: #71717a;
-      --accent: #e11d12;
-      --accent-hover: #ff2a1f;
-      --border: rgba(255, 255, 255, 0.06);
-      --border-strong: rgba(255, 255, 255, 0.1);
+      --bg: #09090b; --card: #131316; --text: #fafafa; --muted: #a1a1aa;
+      --accent: #e11d12; --border: #27272a;
     }
     [data-theme="light"] {
-      --bg: #fafafa;
-      --bg-elevated: #ffffff;
-      --bg-card: #ffffff;
-      --text: #09090b;
-      --text-secondary: #52525b;
-      --text-muted: #71717a;
-      --accent: #c4150f;
-      --accent-hover: #a3120d;
-      --border: rgba(0, 0, 0, 0.06);
-      --border-strong: rgba(0, 0, 0, 0.1);
+      --bg: #f4f4f5; --card: #ffffff; --text: #09090b; --muted: #52525b;
+      --accent: #c4150f; --border: #d4d4d8;
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    * { box-sizing: border-box; }
     body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      transition: background 0.3s ease, color 0.3s ease;
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.65; margin: 0;
     }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse 70% 40% at 50% -10%, rgba(225, 29, 18, 0.08), transparent);
-      pointer-events: none;
-      z-index: 0;
-    }
-    [data-theme="light"] body::before {
-      background: radial-gradient(ellipse 70% 40% at 50% -10%, rgba(196, 21, 15, 0.04), transparent);
-    }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { color: var(--accent-hover); text-decoration: underline; }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: color-mix(in srgb, var(--bg) 85%, transparent);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .topbar-inner {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: inherit;
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: -0.02em;
-    }
-    .brand:hover { text-decoration: none; color: inherit; }
-    .brand img {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      object-fit: cover;
-      box-shadow: 0 0 0 1.5px var(--accent);
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .nav a {
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.15s, background 0.15s;
-    }
-    .nav a:hover { color: var(--text); background: var(--border); text-decoration: none; }
-    .nav a.active {
-      color: var(--accent);
-      background: rgba(225, 29, 18, 0.1);
-    }
-    [data-theme="light"] .nav a.active {
-      background: rgba(196, 21, 15, 0.08);
-    }
-
-    .theme-btn {
-      width: 36px;
-      height: 36px;
-      margin-left: 8px;
-      border-radius: 50%;
-      border: 1px solid var(--border-strong);
-      background: var(--bg-elevated);
-      color: var(--text-secondary);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
-    .theme-btn:hover {
-      color: var(--text);
-      border-color: var(--accent);
-    }
-    .theme-btn svg { width: 16px; height: 16px; }
-
-    main {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
-
-    .page-header {
-      margin-bottom: 40px;
-      padding-bottom: 28px;
-      border-bottom: 1px solid var(--border);
-    }
-    .page-header h1 {
-      font-size: clamp(1.5rem, 3.5vw, 1.875rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-    .page-header .meta {
-      color: var(--text-muted);
-      font-size: 0.875rem;
-      font-weight: 500;
-    }
-
-    article h2 {
-      font-size: 1.0625rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-top: 32px;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-    article p {
-      color: var(--text-secondary);
-      font-size: 0.975rem;
-      margin-bottom: 14px;
-    }
-    article p:last-child { margin-bottom: 0; }
-
-    footer {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 24px;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.8125rem;
-    }
+    a { color: var(--accent); }
+    .topbar { background: var(--card); border-bottom: 1px solid var(--border); }
+    .topbar-inner { max-width: 760px; margin: 0 auto; padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--text);
+      font-weight: 700; font-size: 18px; text-decoration: none; }
+    .brand img { width: 32px; height: 32px; border-radius: 50%; }
+    nav { display: flex; align-items: center; gap: 16px; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 15px; }
+    nav a:hover, nav a.active { color: var(--accent); }
+    #themeBtn { background: none; border: 1px solid var(--border); border-radius: 8px;
+      width: 34px; height: 34px; padding: 0; color: var(--text); cursor: pointer;
+      display: flex; align-items: center; justify-content: center; }
+    #themeBtn svg { width: 18px; height: 18px; }
+    main { max-width: 760px; margin: 0 auto; padding: 28px 20px; }
+    .card { background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 24px; }
+    h1 { font-size: 28px; margin: 0 0 4px; }
+    h2 { font-size: 18px; margin: 26px 0 6px; padding-top: 4px; }
+    p { margin: 0 0 12px; }
+    .meta { color: var(--muted); font-size: 14px; }
+    .toc { border: 1px solid var(--border); border-radius: 8px; padding: 12px 18px; margin: 16px 0 8px; }
+    .toc strong { font-size: 14px; }
+    .toc ol { margin: 6px 0 0; padding-left: 20px; font-size: 15px; }
+    .logo-big { width: 96px; height: 96px; border-radius: 50%; }
+    .link-card { display: block; border: 1px solid var(--border); border-radius: 8px;
+      padding: 14px 18px; margin-top: 14px; text-decoration: none; color: var(--text); }
+    .link-card:hover { border-color: var(--accent); }
+    .link-card strong { display: block; color: var(--accent); font-size: 17px; }
+    .link-card span { color: var(--muted); font-size: 15px; }
+    .notice { border: 1px solid var(--accent); border-left-width: 5px; border-radius: 8px;
+      padding: 12px 16px; margin: 0 0 18px; font-size: 15px; }
+    .notice strong { color: var(--accent); }
+    footer { max-width: 760px; margin: 0 auto; padding: 0 20px 28px; color: var(--muted); font-size: 14px; }
+    footer a { color: var(--muted); }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="index.html">
-        <img src="logo.png" alt="Smiley" width="32" height="32">
-        <span>Smiley</span>
-      </a>
-      <nav class="nav">
-        <a href="terms-of-service.html">Terms</a>
-        <a href="privacy-policy.html" class="active">Privacy</a>
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme" title="Toggle theme">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="4"/>
-            <path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/>
-          </svg>
-        </button>
-      </nav>
-    </div>
-  </header>
-
+  <div class="topbar"><div class="topbar-inner">
+    <a class="brand" href="index.html"><img src="logo.png" alt="Smiley logo"> Smiley</a>
+    <nav>
+      <a href="terms-of-service.html">Terms</a>
+      <a href="privacy-policy.html" class="active">Privacy</a>
+      <button id="themeBtn" type="button" aria-label="Toggle light and dark mode" title="Toggle light/dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button>
+    </nav>
+  </div></div>
   <main>
-    <div class="page-header">
-      <h1>Privacy Policy</h1>
-      <p class="meta">Effective date: October 13, 2026</p>
+    <div class="notice"><strong>NOTICE: Community-only bot.</strong> Smiley is built for one Discord community only. It is not intended for use anywhere else, so please do not add it to any other server.</div>
+    <div class="card">
+    <h1>Privacy Policy</h1>
+    <p class="meta">Effective date: October 13, 2026</p>
+    <p>This Privacy Policy explains what information the Smiley Trivia Bot (“Bot”) processes when it is used on Discord. The Bot is built for a single Discord community and is used by that community’s members and staff.</p>
+    <div class="toc"><strong>On this page</strong><ol><li><a href="#information-processed">Information processed</a></li><li><a href="#message-content">Message content</a></li><li><a href="#why-information-is-used">Why information is used</a></li><li><a href="#storage-and-retention">Storage and retention</a></li><li><a href="#sharing">Sharing</a></li><li><a href="#your-choices">Your choices</a></li><li><a href="#children-and-third-party-services">Children and third-party services</a></li><li><a href="#changes">Changes</a></li></ol></div>
+    <h2 id="information-processed">Information processed</h2>
+    <p>The Bot may process Discord server IDs and configured trivia-channel IDs to remember server settings; Discord user IDs when a user submits an answer or invokes an admin/owner command; question answers and interaction metadata needed to operate trivia; and technical error logs needed to diagnose failures. The Bot does not need your Discord password.</p>
+    <h2 id="message-content">Message content</h2>
+    <p>The Bot uses Discord’s Message Content intent solely to detect prefix commands (default prefix “t!”) used by server staff. Messages that do not begin with the command prefix are ignored immediately, as are messages from other bots and direct messages. The Bot does not store, log, analyze, or share the content of messages. Content is parsed only for the command name and its arguments, and every command requires the Manage Server permission. The Bot does not use the Server Members or Presence intents.</p>
+    <h2 id="why-information-is-used">Why information is used</h2>
+    <p>Information is used to provide trivia, track the active question and timeout, save server configuration, enforce command restrictions, and maintain reliability and security.</p>
+    <h2 id="storage-and-retention">Storage and retention</h2>
+    <p>Server settings are stored in a PostgreSQL database. Active-question state is held in memory while the Bot runs. Technical logs may be written to the Bot host. Data is retained only as needed to operate, secure, and troubleshoot the Bot, subject to the operator’s hosting and backup practices.</p>
+    <h2 id="sharing">Sharing</h2>
+    <p>The Bot does not sell personal information. Data may be processed by infrastructure providers used to host the Bot and database, or disclosed where required by law or necessary to protect the service and its users.</p>
+    <h2 id="your-choices">Your choices</h2>
+    <p>You can stop interacting with the Bot at any time, or ask a server administrator to remove it from the server. Some technical records may remain in backups or logs for a limited period.</p>
+    <h2 id="children-and-third-party-services">Children and third-party services</h2>
+    <p>The Bot is operated on Discord and is subject to Discord’s own terms and privacy practices. Do not use the Bot in a way that violates Discord’s age requirements or applicable law.</p>
+    <h2 id="changes">Changes</h2>
+    <p>This policy may be updated as the Bot changes. Continued use after an update means the revised policy applies.</p>
     </div>
-
-    <article>
-      <p>This Privacy Policy explains what information the Smiley Trivia Bot (“Bot”) processes when it is used on Discord. The Bot is built for a single Discord community and is used by that community’s members and staff.</p>
-
-      <h2>Information processed</h2>
-      <p>The Bot may process Discord server IDs and configured trivia-channel IDs to remember server settings; Discord user IDs when a user submits an answer or invokes an admin/owner command; question answers and interaction metadata needed to operate trivia; and technical error logs needed to diagnose failures. The Bot does not need your Discord password.</p>
-
-      <h2>Message content</h2>
-      <p>The Bot uses Discord’s Message Content intent solely to detect prefix commands (default prefix “t!”) used by server staff. Messages that do not begin with the command prefix are ignored immediately, as are messages from other bots and direct messages. The Bot does not store, log, analyze, or share the content of messages. Content is parsed only for the command name and its arguments, and every command requires the Manage Server permission. The Bot does not use the Server Members or Presence intents.</p>
-
-      <h2>Why information is used</h2>
-      <p>Information is used to provide trivia, track the active question and timeout, save server configuration, enforce command restrictions, and maintain reliability and security.</p>
-
-      <h2>Storage and retention</h2>
-      <p>Server settings are stored in a PostgreSQL database. Active-question state is held in memory while the Bot runs. Technical logs may be written to the Bot host. Data is retained only as needed to operate, secure, and troubleshoot the Bot, subject to the operator’s hosting and backup practices.</p>
-
-      <h2>Sharing</h2>
-      <p>The Bot does not sell personal information. Data may be processed by infrastructure providers used to host the Bot and database, or disclosed where required by law or necessary to protect the service and its users.</p>
-
-      <h2>Your choices</h2>
-      <p>You can stop interacting with the Bot at any time, or ask a server administrator to remove it from the server. Some technical records may remain in backups or logs for a limited period.</p>
-
-      <h2>Children and third-party services</h2>
-      <p>The Bot is operated on Discord and is subject to Discord’s own terms and privacy practices. Do not use the Bot in a way that violates Discord’s age requirements or applicable law.</p>
-
-      <h2>Changes</h2>
-      <p>This policy may be updated as the Bot changes. Continued use after an update means the revised policy applies.</p>
-    </article>
   </main>
-
   <footer>
-    Smiley Trivia Bot · These pages describe the Bot operator’s current practices.
+    Smiley Trivia Bot · <a href="terms-of-service.html">Terms</a> · <a href="privacy-policy.html">Privacy</a><br>
+    These pages describe the Bot operator’s current practices.
   </footer>
 
   <script>
     (function () {
-      const root = document.documentElement;
-      const btn = document.getElementById('themeBtn');
-      const stored = localStorage.getItem('smiles-theme');
-      if (stored) root.setAttribute('data-theme', stored);
-      syncMeta();
-
+      var SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>', MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+      var root = document.documentElement;
+      var btn = document.getElementById('themeBtn');
+      try { var s = localStorage.getItem('smiles-theme'); if (s) root.setAttribute('data-theme', s); } catch (e) {}
+      function icon() { btn.innerHTML = root.getAttribute('data-theme') === 'dark' ? SUN : MOON; }
+      icon();
       btn.addEventListener('click', function () {
-        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', next);
-        localStorage.setItem('smiles-theme', next);
-        syncMeta();
+        try { localStorage.setItem('smiles-theme', next); } catch (e) {}
+        icon();
       });
-
-      function syncMeta() {
-        const dark = root.getAttribute('data-theme') === 'dark';
-        document.querySelector('meta[name="theme-color"]').content = dark ? '#09090b' : '#fafafa';
-      }
     })();
   </script>
 </body>
